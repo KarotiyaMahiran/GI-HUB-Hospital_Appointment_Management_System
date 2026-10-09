@@ -48,7 +48,7 @@ The browser admin workspace submits patient and appointment records to these end
 Deploy the Spring Boot jar to a Java 17+ host and use a managed MySQL database. Set `DB_URL`, `DB_USERNAME`, `DB_PASSWORD`, `ADMIN_USERNAME`, and `ADMIN_PASSWORD` as server environment variables. Use a dedicated least-privilege database account rather than the MySQL `root` account, use HTTPS, restrict database network access, and enable backups. The local `localhost` database URL will not work from a remote deployment host; change `DB_URL` to the hosted database connection string. Run database migration/rehearsal in staging first. Do not use `ddl-auto=update` on the production database.
 
 ### Deploy to Render
-The repository-root `render.yaml` configures a Docker web service and points Render to `Hospital_Appointment_Management_System/hospital_appointment_system`, where the `Dockerfile` and Maven project are located. Push the latest commit to GitHub, then in Render choose **New → Blueprint** and select the repository. Before deployment, provide the requested environment variables:
+The repository-root `render.yaml` configures a Docker web service using the repository-root `Dockerfile`, which builds the Maven project in `Hospital_Appointment_Management_System/hospital_appointment_system`. Push the latest commit to GitHub, then in Render choose **New → Blueprint** and select the repository. Before deployment, provide the requested environment variables:
 - `DB_URL`: `jdbc:mysql://<host>:<port>/<database>?useSSL=true&serverTimezone=UTC` (use the JDBC URL supplied by your MySQL provider)
 - `DB_USERNAME` and `DB_PASSWORD`: credentials for a dedicated application database user
 - `ADMIN_USERNAME` and `ADMIN_PASSWORD`: a unique staff account and strong password
