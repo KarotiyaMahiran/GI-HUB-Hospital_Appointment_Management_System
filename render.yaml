@@ -2,6 +2,7 @@ services:
   - type: web
     name: carepoint-hospital-appointments
     runtime: docker
+    rootDir: Hospital_Appointment_Management_System/hospital_appointment_system
     healthCheckPath: /
     envVars:
       - key: DB_URL
