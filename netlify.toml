@@ -1,0 +1,9 @@
+[build]
+  publish = "Hospital_Appointment_Management_System/hospital_appointment_system/src/main/resources/static"
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api-proxy?path=:splat"
+  status = 200
+  force = true
